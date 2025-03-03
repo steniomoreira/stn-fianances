@@ -1,13 +1,16 @@
+import Headline from "@/components/headline";
+
 import { BarChartReneuExpense } from "./_components/chart/bar-cart-revenue-expense";
 import { LineChartExpense } from "./_components/chart/line-chart-expense";
+import Transactions from "./_components/transaction/transactions";
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col">
-      <h1 className="px-6 text-2xl font-semibold">Dashboard</h1>
+    <div className="flex flex-col p-6">
+      <Headline text="Dashboard" />
 
       <div className="grid grid-cols-9">
-        <div className="col-span-6">
+        <div className="col-span-7">
           <div className="flex">
             <div className="flex-1">
               <LineChartExpense />
@@ -19,7 +22,9 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="col-span-3">Transações</div>
+        <div className="col-span-2">
+          <Transactions />
+        </div>
       </div>
     </div>
   );
