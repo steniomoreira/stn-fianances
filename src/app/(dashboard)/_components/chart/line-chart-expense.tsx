@@ -34,7 +34,7 @@ const chartConfig = {
 
 export function LineChartExpense() {
   return (
-    <Card className="border-0 bg-transparent shadow-none">
+    <Card className="-ml-6 bg-transparent shadow-none">
       <CardHeader>
         <CardTitle>Despesas do mês</CardTitle>
         <CardDescription className="text-xs">

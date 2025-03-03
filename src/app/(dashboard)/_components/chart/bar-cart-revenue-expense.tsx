@@ -40,7 +40,7 @@ const chartConfig = {
 
 export function BarChartReneuExpense() {
   return (
-    <Card className="border-0 bg-transparent shadow-none">
+    <Card className="bg-transparent shadow-none">
       <CardHeader>
         <CardTitle>Balanço Receita/Despesa</CardTitle>
         <CardDescription className="text-xs">
