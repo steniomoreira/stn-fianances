@@ -1,4 +1,5 @@
-import { LineChartRevenue } from "./_components/chart/line-chart-revenue";
+import { BarChartReneuExpense } from "./_components/chart/bar-cart-revenue-expense";
+import { LineChartExpense } from "./_components/chart/line-chart-expense";
 
 export default function DashboardPage() {
   return (
@@ -7,8 +8,17 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-9">
         <div className="col-span-6">
-          <LineChartRevenue />
+          <div className="flex">
+            <div className="flex-1">
+              <LineChartExpense />
+            </div>
+
+            <div className="w-[330px]">
+              <BarChartReneuExpense />
+            </div>
+          </div>
         </div>
+
         <div className="col-span-3">Transações</div>
       </div>
     </div>
