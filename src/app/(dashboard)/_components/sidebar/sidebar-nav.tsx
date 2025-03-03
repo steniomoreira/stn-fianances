@@ -8,17 +8,17 @@ function SidebarNav() {
       <SidebarNavItem
         text="Dashboard"
         url="/"
-        icon={<LayoutDashboard size={20} />}
+        icon={<LayoutDashboard size={16} />}
       />
       <SidebarNavItem
         text="Transações"
         url="/transactions"
-        icon={<ArrowDownUp size={20} />}
+        icon={<ArrowDownUp size={16} />}
       />
       <SidebarNavItem
         text="Categorias"
         url="/categories"
-        icon={<ListTree size={20} />}
+        icon={<ListTree size={16} />}
       />
     </div>
   );
