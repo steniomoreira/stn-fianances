@@ -1,3 +1,4 @@
+import Image from "next/image";
 import * as React from "react";
 
 import {
@@ -13,7 +14,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <h2 className="h-[48px]">STN Finance</h2>
+        <div className="flex h-[56px] items-center gap-2 border-b">
+          <div className="relative h-8 w-8">
+            <Image
+              src="/logo-stn-finance.svg"
+              alt="STN Finance"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <p className="text-xl font-semibold">STN Finance</p>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarNav />
