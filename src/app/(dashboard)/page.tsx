@@ -2,6 +2,7 @@ import Headline from "@/components/headline";
 
 import { BarChartReneuExpense } from "./_components/chart/bar-cart-revenue-expense";
 import { LineChartExpense } from "./_components/chart/line-chart-expense";
+import Summary from "./_components/summary/summary";
 import Transactions from "./_components/transaction/transactions";
 
 export default function DashboardPage() {
@@ -20,6 +21,8 @@ export default function DashboardPage() {
               <BarChartReneuExpense />
             </div>
           </div>
+
+          <Summary />
         </div>
 
         <div className="col-span-2">
