@@ -40,7 +40,7 @@ const chartConfig = {
 
 export function BarChartReneuExpense() {
   return (
-    <Card className="bg-transparent shadow-none">
+    <Card>
       <CardHeader>
         <CardTitle>Balanço Receita/Despesa</CardTitle>
         <CardDescription className="text-xs">
@@ -48,7 +48,7 @@ export function BarChartReneuExpense() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[180px] w-full">
+        <ChartContainer config={chartConfig} className="h-[125px] w-full">
           <BarChart accessibilityLayer data={chartData}>
             <XAxis
               dataKey="month"
@@ -89,11 +89,11 @@ export function BarChartReneuExpense() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Tendência de alta de 5,2% nesse período{" "}
-          <TrendingUp className="h-4 w-4" />
+          Tendência de alta de 5,2%
+          <TrendingUp className="h-4 w-4 text-lime-500" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Mostrando o balanço dos últimos 6 meses
+          Balanço dos últimos 6 meses
         </div>
       </CardFooter>
     </Card>

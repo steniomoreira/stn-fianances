@@ -34,7 +34,7 @@ const chartConfig = {
 
 export function LineChartExpense() {
   return (
-    <Card className="-ml-6 bg-transparent shadow-none">
+    <Card className="flex-1">
       <CardHeader>
         <CardTitle>Despesas do mês</CardTitle>
         <CardDescription className="text-xs">
@@ -42,7 +42,7 @@ export function LineChartExpense() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[240px] w-full">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">
           <AreaChart
             accessibilityLayer
             data={chartData}
@@ -55,12 +55,9 @@ export function LineChartExpense() {
               axisLine={false}
               tickLine={false}
               width={80}
-              tickMargin={14}
-              tickFormatter={(value: number) =>
-                value.toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })
+              tickMargin={8}
+              tickFormatter={(value) =>
+                formatCurrency(value).replace(",00", "")
               }
             />
 

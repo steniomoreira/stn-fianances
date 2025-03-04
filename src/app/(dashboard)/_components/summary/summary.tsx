@@ -12,14 +12,14 @@ import { Card } from "@/components/ui/card";
 
 function Summary() {
   return (
-    <div className="space-y-6 pr-6 pt-7">
+    <div className="space-y-4">
       <Card>
         <div className="flex flex-col gap-2 p-6">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
               <Wallet size={14} className="text-yellow-500" />
             </div>
-            <p className="text-xs text-muted-foreground">Receita</p>
+            <p className="text-xs text-muted-foreground">Saldo</p>
           </div>
 
           <div className="flex items-center justify-between">
@@ -36,7 +36,7 @@ function Summary() {
         </div>
       </Card>
 
-      <div className="grid grid-cols-9 gap-6">
+      <div className="grid grid-cols-9 gap-4">
         <div className="col-span-3">
           <Card>
             <div className="flex flex-col gap-2 p-6">

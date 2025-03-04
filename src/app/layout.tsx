@@ -1,10 +1,9 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Mulish } from "next/font/google";
 
-const roboto = Roboto({
-  weight: ["400", "700"],
+const mulish = Mulish({
   subsets: ["latin"],
 });
 
@@ -20,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+      <body className={`${mulish.className} dark antialiased`}>{children}</body>
     </html>
   );
 }

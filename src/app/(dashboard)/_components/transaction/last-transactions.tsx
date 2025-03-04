@@ -6,7 +6,7 @@ import { formatCurrency } from "@/utils/formatter";
 
 const EXPENSE = "EXPENSE";
 
-const dataTransactions = [
+const dataLastTransactions = [
   {
     id: "1",
     type: "REVENUE",
@@ -81,7 +81,7 @@ const dataTransactions = [
 
 const isExpense = (type: string) => type === EXPENSE;
 
-function Transactions() {
+function LastTransactions() {
   return (
     <div className="w-full space-y-4 rounded-lg border p-4">
       <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ function Transactions() {
 
       <Separator />
       <div className="space-y-6">
-        {dataTransactions.map((transaction) => (
+        {dataLastTransactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center">
             <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-sm bg-gray-500/10 p-1">
               <BriefcaseBusiness size={14} className="text-gray-500" />
@@ -107,7 +107,7 @@ function Transactions() {
             </div>
 
             <p
-              className={`${isExpense(transaction.type) ? "text-red-500" : "text-green-500"} text-xs`}
+              className={`${isExpense(transaction.type) ? "text-red-500" : "text-lime-500"} text-xs`}
             >
               {isExpense(transaction.type) ? "-" : "+"}
               {formatCurrency(transaction.amount)}
@@ -119,4 +119,4 @@ function Transactions() {
   );
 }
 
-export default Transactions;
+export default LastTransactions;
