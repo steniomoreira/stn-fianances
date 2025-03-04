@@ -2,9 +2,9 @@ import {
   ArrowDownUp,
   Eye,
   PiggyBank,
+  Smile,
   TrendingDown,
   TrendingUp,
-  Wallet,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ function Summary() {
         <div className="flex flex-col gap-2 p-6">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
-              <Wallet size={14} className="text-yellow-500" />
+              <Smile size={18} className="text-yellow-500" />
             </div>
             <p className="text-xs text-muted-foreground">Saldo</p>
           </div>
@@ -42,7 +42,7 @@ function Summary() {
             <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center gap-2">
                 <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-green-500/10 p-1">
-                  <TrendingUp size={14} className="text-lime-500" />
+                  <TrendingUp size={18} className="text-lime-500" />
                 </div>
                 <p className="text-xs text-muted-foreground">Receita</p>
               </div>
@@ -56,7 +56,7 @@ function Summary() {
             <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center gap-2">
                 <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-red-500/10 p-1">
-                  <TrendingDown size={14} className="text-red-500" />
+                  <TrendingDown size={18} className="text-red-500" />
                 </div>
                 <p className="text-xs text-muted-foreground">Despesa</p>
               </div>
@@ -70,7 +70,7 @@ function Summary() {
             <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center gap-2">
                 <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
-                  <PiggyBank size={14} className="text-yellow-500" />
+                  <PiggyBank size={18} className="text-yellow-500" />
                 </div>
                 <p className="text-xs text-muted-foreground">Investimentos</p>
               </div>

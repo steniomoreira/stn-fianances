@@ -96,7 +96,7 @@ function LastTransactions() {
         {dataLastTransactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center">
             <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-              <BriefcaseBusiness size={14} className="text-gray-500" />
+              <BriefcaseBusiness size={18} className="text-gray-500" />
             </div>
 
             <div className="flex-1">
@@ -107,7 +107,7 @@ function LastTransactions() {
             </div>
 
             <p
-              className={`${isExpense(transaction.type) ? "text-red-500" : "text-lime-500"} text-xs`}
+              className={`${isExpense(transaction.type) ? "text-red-500" : "text-lime-500"} text-sm`}
             >
               {isExpense(transaction.type) ? "-" : "+"}
               {formatCurrency(transaction.amount)}
