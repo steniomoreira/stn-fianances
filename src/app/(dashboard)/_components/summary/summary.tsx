@@ -12,7 +12,7 @@ import { Card } from "@/components/ui/card";
 
 function Summary() {
   return (
-    <div className="space-y-4 pr-6">
+    <div className="space-y-6 pr-6 pt-7">
       <Card>
         <div className="flex flex-col gap-2 p-6">
           <div className="flex items-center gap-2">
@@ -36,7 +36,7 @@ function Summary() {
         </div>
       </Card>
 
-      <div className="grid grid-cols-9 gap-4">
+      <div className="grid grid-cols-9 gap-6">
         <div className="col-span-3">
           <Card>
             <div className="flex flex-col gap-2 p-6">

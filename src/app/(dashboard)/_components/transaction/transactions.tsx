@@ -1,90 +1,119 @@
-import { Badge, BadgeCheck, Link2 } from "lucide-react";
-import Link from "next/link";
+import { BriefcaseBusiness } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { formatCurrency } from "@/utils/formatter";
 
-import BadgeSeparator from "./badge-separator";
+const EXPENSE = "EXPENSE";
 
-const dataTransactions = {
-  revenue: [
-    { id: "1", paid: true, name: "Freelancing", date: "02 Mar, 2025" },
-    { id: "2", paid: true, name: "Freelancing", date: "05 Mar, 2025" },
-    { id: "3", paid: false, name: "Freelancing", date: "10 Mar, 2025" },
-    { id: "4", paid: true, name: "Freelancing", date: "15 Mar, 2025" },
-  ],
-  expense: [
-    { id: "1", paid: true, name: "Aluguel", date: "02 Mar, 2025" },
-    { id: "2", paid: false, name: "Gasolina", date: "05 Mar, 2025" },
-    { id: "3", paid: true, name: "Academia", date: "08 Mar, 2025" },
-    { id: "4", paid: true, name: "Faculdade", date: "12 Mar, 2025" },
-  ],
-};
+const dataTransactions = [
+  {
+    id: "1",
+    type: "REVENUE",
+    name: "Freelancing",
+    date: "02 Mar, 2025",
+    amount: 150,
+  },
+  {
+    id: "2",
+    type: "REVENUE",
+    name: "Freelancing",
+    date: "05 Mar, 2025",
+    amount: 850.54,
+  },
+  {
+    id: "3",
+    type: "REVENUE",
+    name: "Freelancing",
+    date: "10 Mar, 2025",
+    amount: 451.55,
+  },
+  {
+    id: "4",
+    type: "EXPENSE",
+    name: "Aluguel",
+    date: "15 Mar, 2025",
+    amount: 500,
+  },
+  {
+    id: "5",
+    type: "EXPENSE",
+    name: "Gasolina",
+    date: "05 Mar, 2025",
+    amount: 850.54,
+  },
+  {
+    id: "6",
+    type: "REVENUE",
+    name: "Freelancing",
+    date: "10 Mar, 2025",
+    amount: 451.55,
+  },
+  {
+    id: "7",
+    type: "EXPENSE",
+    name: "Aluguel",
+    date: "15 Mar, 2025",
+    amount: 500,
+  },
+  {
+    id: "8",
+    type: "EXPENSE",
+    name: "Gasolina",
+    date: "05 Mar, 2025",
+    amount: 850.54,
+  },
+  {
+    id: "9",
+    type: "REVENUE",
+    name: "Freelancing",
+    date: "10 Mar, 2025",
+    amount: 451.55,
+  },
+  {
+    id: "10",
+    type: "EXPENSE",
+    name: "Aluguel",
+    date: "15 Mar, 2025",
+    amount: 500,
+  },
+];
+
+const isExpense = (type: string) => type === EXPENSE;
 
 function Transactions() {
   return (
-    <div className="h-screen w-full rounded-lg border p-4">
-      <h2 className="font-semibold">Últimas Transações</h2>
-
-      <div className="py-4">
-        <BadgeSeparator text="Receita" />
-
-        <div className="mt-2 space-y-4">
-          {dataTransactions.revenue.map((revenue) => (
-            <Card key={revenue.id}>
-              <CardContent className="px-4 py-2">
-                <div className="flex h-full items-center gap-4">
-                  {revenue.paid ? (
-                    <BadgeCheck size={20} className="text-green-700" />
-                  ) : (
-                    <Badge size={20} className="text-green-700/40" />
-                  )}
-
-                  <div className="flex-1">
-                    <p className="text-sm">{revenue.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {revenue.date}
-                    </p>
-                  </div>
-
-                  <Link href="/transactions">
-                    <Link2 size={20} className="text-muted-foreground" />
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <div className="w-full space-y-4 rounded-lg border p-4">
+      <div className="flex items-center justify-between">
+        <h2 className="font-semibold">Transações</h2>
+        <Button variant="outline" className="rounded-full text-xs">
+          Ver mais
+        </Button>
       </div>
 
-      <div className="py-4">
-        <BadgeSeparator variant="expense" text="Despesa" />
+      <Separator />
+      <div className="space-y-6">
+        {dataTransactions.map((transaction) => (
+          <div key={transaction.id} className="flex items-center">
+            <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-sm bg-gray-500/10 p-1">
+              <BriefcaseBusiness size={14} className="text-gray-500" />
+            </div>
 
-        <div className="mt-2 space-y-4">
-          {dataTransactions.expense.map((expense) => (
-            <Card key={expense.id}>
-              <CardContent className="px-4 py-2">
-                <div className="flex h-full items-center gap-4">
-                  {expense.paid ? (
-                    <BadgeCheck size={20} className="text-green-700" />
-                  ) : (
-                    <Badge size={20} className="text-green-700/40" />
-                  )}
+            <div className="flex-1">
+              <p className="text-xs">{transaction.name}</p>
+              <p className="text-xs text-muted-foreground">
+                {transaction.date}
+              </p>
+            </div>
 
-                  <div className="flex-1">
-                    <p className="text-sm">{expense.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {expense.date}
-                    </p>
-                  </div>
-
-                  <Link href="/transactions">
-                    <Link2 size={20} className="text-muted-foreground" />
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+            <p
+              className={`${isExpense(transaction.type) ? "text-red-500" : "text-green-500"} text-xs`}
+            >
+              {isExpense(transaction.type) ? "-" : "+"}
+              {formatCurrency(transaction.amount)}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
