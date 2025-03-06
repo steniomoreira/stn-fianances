@@ -1,4 +1,5 @@
 import { BriefcaseBusiness } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -86,8 +87,8 @@ function LastTransactions() {
     <div className="w-full space-y-4 rounded-lg border p-4">
       <div className="flex items-center justify-between">
         <h2 className="font-semibold">Transações</h2>
-        <Button variant="outline" className="rounded-full text-xs">
-          Ver mais
+        <Button variant="outline" className="rounded-full text-xs" asChild>
+          <Link href="/transactions">Ver mais</Link>
         </Button>
       </div>
 
@@ -109,7 +110,7 @@ function LastTransactions() {
             <p
               className={`${isExpense(transaction.type) ? "text-red-500" : "text-lime-500"} text-sm`}
             >
-              {isExpense(transaction.type) ? "-" : "+"}
+              {isExpense(transaction.type) ? "- " : "+ "}
               {formatCurrency(transaction.amount)}
             </p>
           </div>
