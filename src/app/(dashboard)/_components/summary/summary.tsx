@@ -47,7 +47,12 @@ function Summary() {
                 <p className="text-xs text-muted-foreground">Receita</p>
               </div>
 
-              <h2 className="text-xl font-semibold">R$ 2.700</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">R$ 2.700</h2>
+                <Button variant="ghost" size="icon">
+                  <Eye size={16} className="opacity-50" />
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
@@ -61,12 +66,17 @@ function Summary() {
                 <p className="text-xs text-muted-foreground">Despesa</p>
               </div>
 
-              <h2 className="text-xl font-semibold">R$ 2.700</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">R$ 2.700</h2>
+                <Button variant="ghost" size="icon">
+                  <Eye size={16} className="opacity-50" />
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
         <div className="col-span-3">
-          <Card>
+          <Card className="bg-yellow-800/5">
             <div className="flex flex-col gap-2 p-6">
               <div className="flex items-center gap-2">
                 <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
@@ -75,7 +85,12 @@ function Summary() {
                 <p className="text-xs text-muted-foreground">Investimentos</p>
               </div>
 
-              <h2 className="text-xl font-semibold">R$ 2.700</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">R$ 2.700</h2>
+                <Button variant="ghost" size="icon">
+                  <Eye size={16} className="opacity-50" />
+                </Button>
+              </div>
             </div>
           </Card>
         </div>
