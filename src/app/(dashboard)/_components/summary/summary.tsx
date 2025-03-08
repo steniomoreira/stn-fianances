@@ -1,6 +1,7 @@
 import {
   ArrowDownUp,
   Eye,
+  EyeClosed,
   PiggyBank,
   Smile,
   TrendingDown,
@@ -86,9 +87,9 @@ function Summary() {
               </div>
 
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-semibold">R$ 2.700</h2>
+                <h2 className="text-xl font-semibold">R$ ...</h2>
                 <Button variant="ghost" size="icon">
-                  <Eye size={16} className="opacity-50" />
+                  <EyeClosed size={16} className="opacity-50" />
                 </Button>
               </div>
             </div>
