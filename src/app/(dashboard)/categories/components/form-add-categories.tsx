@@ -22,8 +22,8 @@ function FormAddCategories({
             <Button
               type="button"
               variant="secondary"
-              size="icon"
               onClick={handleOnOpenChange}
+              className="h-9 w-9"
             >
               <DynamicIcon name={iconName} size={18} />
             </Button>

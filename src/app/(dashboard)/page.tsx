@@ -14,7 +14,7 @@ import {
 import { BarChartReneuExpense } from "./_components/chart/bar-cart-revenue-expense";
 import { LineChartExpense } from "./_components/chart/line-chart-expense";
 import Summary from "./_components/summary/summary";
-import LastTransactions from "./_components/transaction/last-transactions";
+import LastTransactions from "./transactions/transaction/last-transactions";
 
 export default function DashboardPage() {
   return (
