@@ -55,7 +55,7 @@ function Summary() {
             className="bg-yellow-800/5"
             label="Investimentos"
             icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 bg-opacity-10 p-1">
+              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
                 <PiggyBank size={18} className="text-yellow-500" />
               </div>
             }
