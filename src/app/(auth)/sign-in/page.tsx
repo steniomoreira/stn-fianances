@@ -26,7 +26,7 @@ function SingInPage() {
           <Input placeholder="Sua senha" />
 
           <Link
-            href="#"
+            href="/forgot-password"
             className="float-right pb-2 text-xs text-muted-foreground"
           >
             Esqueci minha senha
