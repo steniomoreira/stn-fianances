@@ -23,7 +23,7 @@ function SingInPage() {
       <form className="w-full space-y-4">
         <div className="space-y-4">
           <Input placeholder="Seu e-mail" />
-          <Input placeholder="Seua senha" />
+          <Input placeholder="Sua senha" />
 
           <Link
             href="#"
