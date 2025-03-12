@@ -36,21 +36,20 @@ function CardSummary({
           <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-green-500/10 p-1">
             {icon}
           </div>
-          <p className="text-xs text-muted-foreground">{label}</p>
+          <p className="mr-4 text-xs text-muted-foreground">{label}</p>
+
+          <Button variant="ghost" size="icon" onClick={handleShowAmount}>
+            {showAmount ? (
+              <Eye size={16} className="opacity-50" />
+            ) : (
+              <EyeClosed size={16} className="opacity-50" />
+            )}
+          </Button>
         </div>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">
-              {showAmount ? formatCurrency(amount) : "R$ ..."}
-            </h2>
-            <Button variant="ghost" size="icon" onClick={handleShowAmount}>
-              {showAmount ? (
-                <Eye size={16} className="opacity-50" />
-              ) : (
-                <EyeClosed size={16} className="opacity-50" />
-              )}
-            </Button>
-          </div>
+          <h2 className="text-2xl font-semibold">
+            {showAmount ? formatCurrency(amount) : "R$ ..."}
+          </h2>
 
           {actionButton}
         </div>
