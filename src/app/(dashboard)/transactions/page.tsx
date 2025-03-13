@@ -1,6 +1,5 @@
 import {
   ArrowDownUp,
-  CircleCheck,
   CircleIcon,
   ExternalLink,
   ListFilter,
@@ -10,6 +9,7 @@ import {
   TrendingDown,
   TrendingUp,
 } from "lucide-react";
+import { DynamicIcon } from "lucide-react/dynamic";
 
 import CardSummary from "@/components/card-summary";
 import Headline from "@/components/headline";
@@ -90,10 +90,10 @@ function TransactionsPage() {
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50 text-xs">
+              <TableHead>Data de vencimento</TableHead>
               <TableHead>Descrição</TableHead>
               <TableHead>Tipo</TableHead>
               <TableHead>Valor</TableHead>
-              <TableHead>Data</TableHead>
               <TableHead>Categoria</TableHead>
               <TableHead>Conta</TableHead>
               <TableHead>Status</TableHead>
@@ -102,6 +102,9 @@ function TransactionsPage() {
           </TableHeader>
           <TableBody>
             <TableRow className="hover:bg-transparent">
+              <TableCell className="text-muted-foreground">
+                10 Mar, 2025
+              </TableCell>
               <TableCell>Aluguel</TableCell>
 
               <TableCell>
@@ -109,13 +112,20 @@ function TransactionsPage() {
                   Despesa <TrendingDown size={18} className="text-red-500" />
                 </div>
               </TableCell>
-              <TableCell>R$ 1.250,00</TableCell>
+              <TableCell className="text-red-500">R$ 1.250,00</TableCell>
+
               <TableCell className="text-muted-foreground">
-                10 Mar, 2025
-              </TableCell>
-              <TableCell>Moradia</TableCell>
-              <TableCell>
                 <div className="flex items-center gap-2">
+                  <DynamicIcon
+                    name="house"
+                    size={14}
+                    className="text-gray-500"
+                  />
+                  Moradia
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2 text-muted-foreground">
                   <CircleIcon
                     className="fill-muted-foreground text-transparent"
                     size={10}
@@ -124,10 +134,7 @@ function TransactionsPage() {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex items-center gap-2">
-                  <CircleCheck size={14} className="text-primary" />
-                  Pago
-                </div>
+                <div className="flex items-center gap-2">Pago</div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center justify-center gap-2">
@@ -149,20 +156,29 @@ function TransactionsPage() {
               </TableCell>
             </TableRow>
             <TableRow className="hover:bg-transparent">
+              <TableCell className="text-muted-foreground">
+                15 Mar, 2025
+              </TableCell>
               <TableCell>Freelacing</TableCell>
-
               <TableCell>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   Receita <TrendingUp size={18} className="text-lime-500" />
                 </div>
               </TableCell>
-              <TableCell>R$ 10.000,00</TableCell>
+              <TableCell className="text-lime-500">R$ 10.000,00</TableCell>
+
               <TableCell className="text-muted-foreground">
-                15 Mar, 2025
-              </TableCell>
-              <TableCell>Trabalho</TableCell>
-              <TableCell>
                 <div className="flex items-center gap-2">
+                  <DynamicIcon
+                    name="briefcase-business"
+                    size={14}
+                    className="text-gray-500"
+                  />
+                  Trabalho
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2 text-muted-foreground">
                   <CircleIcon
                     className="fill-violet-900 text-transparent"
                     size={10}
@@ -171,13 +187,7 @@ function TransactionsPage() {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex items-center gap-2">
-                  <CircleCheck
-                    size={14}
-                    className="text-muted-foreground opacity-30"
-                  />
-                  Pago
-                </div>
+                <div className="flex items-center gap-2">Não pago</div>
               </TableCell>
               <TableCell>
                 <div className="flex items-center justify-center gap-2">
