@@ -33,9 +33,7 @@ function CardSummary({
     <Card className={className}>
       <div className="flex flex-col gap-2 p-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-green-500/10 p-1">
-            {icon}
-          </div>
+          {icon}
           <p className="mr-4 text-xs text-muted-foreground">{label}</p>
 
           <Button variant="ghost" size="icon" onClick={handleShowAmount}>

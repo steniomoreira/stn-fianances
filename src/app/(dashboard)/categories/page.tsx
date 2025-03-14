@@ -1,10 +1,11 @@
 "use client";
 
 import { ExternalLink, Trash2 } from "lucide-react";
-import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { IconName } from "lucide-react/dynamic";
 import { useState } from "react";
 
 import Headline from "@/components/headline";
+import IconWrapper from "@/components/icon-wrapper";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -48,13 +49,7 @@ function CategoriesPage() {
               <TableBody>
                 <TableRow className="hover:bg-transparent">
                   <TableCell>
-                    <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-                      <DynamicIcon
-                        name="house"
-                        size={18}
-                        className="text-gray-500"
-                      />
-                    </div>
+                    <IconWrapper icon="house" color="gray" />
                   </TableCell>
                   <TableCell>Moradia</TableCell>
                   <TableCell>
@@ -78,13 +73,7 @@ function CategoriesPage() {
                 </TableRow>
                 <TableRow className="hover:bg-transparent">
                   <TableCell>
-                    <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-                      <DynamicIcon
-                        name="plane"
-                        size={18}
-                        className="text-gray-500"
-                      />
-                    </div>
+                    <IconWrapper icon="plane" color="gray" />
                   </TableCell>
                   <TableCell>Viagem</TableCell>
                   <TableCell>
@@ -108,13 +97,7 @@ function CategoriesPage() {
                 </TableRow>
                 <TableRow className="hover:bg-transparent">
                   <TableCell>
-                    <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-                      <DynamicIcon
-                        name="plane"
-                        size={18}
-                        className="text-gray-500"
-                      />
-                    </div>
+                    <IconWrapper icon="plane" color="gray" />
                   </TableCell>
                   <TableCell>Viagem</TableCell>
                   <TableCell>
@@ -138,13 +121,7 @@ function CategoriesPage() {
                 </TableRow>
                 <TableRow className="hover:bg-transparent">
                   <TableCell>
-                    <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-                      <DynamicIcon
-                        name="plane"
-                        size={18}
-                        className="text-gray-500"
-                      />
-                    </div>
+                    <IconWrapper icon="plane" color="gray" />
                   </TableCell>
                   <TableCell>Viagem</TableCell>
                   <TableCell>

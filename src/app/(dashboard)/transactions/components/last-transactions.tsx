@@ -1,6 +1,7 @@
-import { BriefcaseBusiness } from "lucide-react";
+import { IconName } from "lucide-react/dynamic";
 import Link from "next/link";
 
+import IconWrapper from "@/components/icon-wrapper";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { formatCurrency } from "@/utils/formatter";
@@ -12,6 +13,7 @@ const dataLastTransactions = [
     id: "1",
     type: "REVENUE",
     name: "Freelancing",
+    iconName: "briefcase-business",
     date: "02 Mar, 2025",
     amount: 150,
   },
@@ -19,6 +21,7 @@ const dataLastTransactions = [
     id: "2",
     type: "REVENUE",
     name: "Freelancing",
+    iconName: "briefcase-business",
     date: "05 Mar, 2025",
     amount: 850.54,
   },
@@ -26,6 +29,7 @@ const dataLastTransactions = [
     id: "3",
     type: "REVENUE",
     name: "Freelancing",
+    iconName: "briefcase-business",
     date: "10 Mar, 2025",
     amount: 451.55,
   },
@@ -33,6 +37,7 @@ const dataLastTransactions = [
     id: "4",
     type: "EXPENSE",
     name: "Aluguel",
+    iconName: "house",
     date: "15 Mar, 2025",
     amount: 500,
   },
@@ -40,6 +45,7 @@ const dataLastTransactions = [
     id: "5",
     type: "EXPENSE",
     name: "Gasolina",
+    iconName: "car",
     date: "05 Mar, 2025",
     amount: 850.54,
   },
@@ -47,6 +53,7 @@ const dataLastTransactions = [
     id: "6",
     type: "REVENUE",
     name: "Freelancing",
+    iconName: "briefcase-business",
     date: "10 Mar, 2025",
     amount: 451.55,
   },
@@ -54,6 +61,7 @@ const dataLastTransactions = [
     id: "7",
     type: "EXPENSE",
     name: "Aluguel",
+    iconName: "house",
     date: "15 Mar, 2025",
     amount: 500,
   },
@@ -61,6 +69,7 @@ const dataLastTransactions = [
     id: "8",
     type: "EXPENSE",
     name: "Gasolina",
+    iconName: "car",
     date: "05 Mar, 2025",
     amount: 850.54,
   },
@@ -68,6 +77,7 @@ const dataLastTransactions = [
     id: "9",
     type: "REVENUE",
     name: "Freelancing",
+    iconName: "briefcase-business",
     date: "10 Mar, 2025",
     amount: 451.55,
   },
@@ -75,6 +85,7 @@ const dataLastTransactions = [
     id: "10",
     type: "EXPENSE",
     name: "Aluguel",
+    iconName: "house",
     date: "15 Mar, 2025",
     amount: 500,
   },
@@ -96,11 +107,13 @@ function LastTransactions() {
       <div className="space-y-6">
         {dataLastTransactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center">
-            <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-sm bg-gray-500/10 p-1">
-              <BriefcaseBusiness size={18} className="text-gray-500" />
-            </div>
+            <IconWrapper
+              icon={transaction.iconName as IconName}
+              color="gray"
+              size="sm"
+            />
 
-            <div className="flex-1">
+            <div className="ml-2 flex-1">
               <p className="text-xs">{transaction.name}</p>
               <p className="text-xs text-muted-foreground">
                 {transaction.date}

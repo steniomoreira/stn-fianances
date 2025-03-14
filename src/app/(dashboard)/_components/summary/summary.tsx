@@ -1,12 +1,7 @@
-import {
-  ArrowDownUp,
-  PiggyBank,
-  Smile,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowDownUp } from "lucide-react";
 
 import CardSummary from "@/components/card-summary";
+import IconWrapper from "@/components/icon-wrapper";
 import { Button } from "@/components/ui/button";
 
 function Summary() {
@@ -14,11 +9,7 @@ function Summary() {
     <div className="space-y-4">
       <CardSummary
         label="Saldo"
-        icon={
-          <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
-            <Smile size={18} className="text-yellow-500" />
-          </div>
-        }
+        icon={<IconWrapper icon="smile" color="yellow" size="sm" />}
         amount={2850}
         actionButton={
           <Button className="rounded-full">
@@ -31,22 +22,14 @@ function Summary() {
         <div className="col-span-3">
           <CardSummary
             label="Receita"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-green-500/10 p-1">
-                <TrendingUp size={18} className="text-lime-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="trending-up" color="lime" size="sm" />}
             amount={3800}
           />
         </div>
         <div className="col-span-3">
           <CardSummary
             label="Despesa"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-red-500/10 p-1">
-                <TrendingDown size={18} className="text-red-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="trending-down" color="red" size="sm" />}
             amount={2500}
           />
         </div>
@@ -54,11 +37,7 @@ function Summary() {
           <CardSummary
             className="bg-yellow-800/5"
             label="Investimentos"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
-                <PiggyBank size={18} className="text-yellow-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="piggy-bank" color="yellow" size="sm" />}
             amount={5400}
           />
         </div>

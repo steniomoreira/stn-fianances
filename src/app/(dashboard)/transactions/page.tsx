@@ -4,7 +4,6 @@ import {
   ExternalLink,
   ListFilter,
   Search,
-  Smile,
   Trash2,
   TrendingDown,
   TrendingUp,
@@ -13,6 +12,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 
 import CardSummary from "@/components/card-summary";
 import Headline from "@/components/headline";
+import IconWrapper from "@/components/icon-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -40,22 +40,14 @@ function TransactionsPage() {
         <div className="col-span-3">
           <CardSummary
             label="Receita"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-green-500/10 p-1">
-                <TrendingUp size={18} className="text-lime-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="trending-up" color="lime" size="sm" />}
             amount={3800}
           />
         </div>
         <div className="col-span-3">
           <CardSummary
             label="Despesa"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-red-500/10 p-1">
-                <TrendingDown size={18} className="text-red-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="trending-down" color="red" size="sm" />}
             amount={2500}
           />
         </div>
@@ -63,11 +55,7 @@ function TransactionsPage() {
           <CardSummary
             className="bg-yellow-800/5"
             label="Saldo"
-            icon={
-              <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-500/10 p-1">
-                <Smile size={18} className="text-yellow-500" />
-              </div>
-            }
+            icon={<IconWrapper icon="smile" color="yellow" size="sm" />}
             amount={5400}
           />
         </div>
