@@ -12,22 +12,28 @@ const iconWrapperVariants = cva(
         sm: "h-6 w-6",
         lg: "h-10 w-10",
       },
+      color: {
+        gray: "text-gray-500 bg-gray-500/10",
+        yellow: "text-yellow-500 bg-yellow-500/10",
+        lime: "text-lime-500 bg-lime-500/10",
+        red: "text-red-500 bg-red-500/10",
+      },
     },
     defaultVariants: {
       size: "default",
+      color: "gray",
     },
   },
 );
 
 interface IconWrapperProps extends VariantProps<typeof iconWrapperVariants> {
   icon: IconName;
-  color: string;
 }
 
 function IconWrapper({ icon, color, size }: IconWrapperProps) {
   return (
-    <div className={cn(iconWrapperVariants({ size }), `bg-${color}-500/10`)}>
-      <DynamicIcon name={icon} size={18} className={`text-${color}-500`} />
+    <div className={cn(iconWrapperVariants({ size, color }))}>
+      <DynamicIcon name={icon} size={18} />
     </div>
   );
 }
