@@ -1,4 +1,4 @@
-import { ArrowDownUp, LayoutDashboard, ListTree } from "lucide-react";
+import { ArrowDownUp, IdCard, LayoutDashboard, ListTree } from "lucide-react";
 
 import SidebarNavItem from "./sidebar-nav-item";
 
@@ -19,6 +19,11 @@ function SidebarNav() {
         text="Categorias"
         url="/categories"
         icon={<ListTree size={16} />}
+      />
+      <SidebarNavItem
+        text="Contas"
+        url="/accounts"
+        icon={<IdCard size={16} />}
       />
     </div>
   );
