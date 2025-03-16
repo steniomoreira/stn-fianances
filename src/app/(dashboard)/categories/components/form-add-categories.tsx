@@ -18,7 +18,7 @@ function FormAddCategories({
       <CardHeader>Adicionar uma nova categoria</CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4">
-          <div className="flex justify-between gap-2">
+          <div className="flex gap-2">
             <Button
               type="button"
               variant="secondary"

@@ -13,34 +13,28 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import FormAddAccounts from "./components/form-add-accounts";
+
 const mockAccount = [
   {
     number: "321654",
     name: "Carteira",
     color: "#414141",
-    type: "MONEY",
-    closinDay: null,
   },
   {
     number: "321658",
     name: "Nubank",
     color: "#4c1d95",
-    type: "CREDIT_CARD",
-    closinDay: "10",
   },
   {
     number: "644311",
     name: "Inter",
     color: "#ff7220",
-    type: "CHECKING ACCOUNT",
-    closinDay: null,
   },
   {
     number: "987654",
     name: "Itaú",
     color: "#f88d00",
-    type: "SAVINGS_ACCOUNT",
-    closinDay: null,
   },
 ];
 
@@ -55,8 +49,9 @@ function AccountsPage() {
             <Table>
               <TableHeader>
                 <TableRow className="bg-muted/50 text-xs">
-                  <TableHead className="w-[60px]">Cor</TableHead>
-                  <TableHead>Conta</TableHead>
+                  <TableHead className="w-[120px]">Conta</TableHead>
+                  <TableHead className="w-[40px]">Cor</TableHead>
+                  <TableHead>Nome</TableHead>
                   <TableHead className="w-[100px]"></TableHead>
                 </TableRow>
               </TableHeader>
@@ -66,6 +61,9 @@ function AccountsPage() {
                     key={account.number}
                     className="hover:bg-transparent"
                   >
+                    <TableCell className="text-muted-foreground">
+                      {account.number}
+                    </TableCell>
                     <TableCell>
                       <CircleIcon
                         style={{ fill: account.color, color: "transparent" }}
@@ -98,7 +96,9 @@ function AccountsPage() {
           </div>
         </div>
 
-        <div className="col-span-3">form</div>
+        <div className="col-span-3">
+          <FormAddAccounts />
+        </div>
       </div>
     </div>
   );
