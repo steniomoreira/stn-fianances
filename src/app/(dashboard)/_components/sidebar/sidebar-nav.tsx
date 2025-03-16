@@ -1,4 +1,4 @@
-import { ArrowDownUp, IdCard, LayoutDashboard, ListTree } from "lucide-react";
+import { ArrowDownUp, Landmark, LayoutDashboard, ListTree } from "lucide-react";
 
 import SidebarNavItem from "./sidebar-nav-item";
 
@@ -23,7 +23,7 @@ function SidebarNav() {
       <SidebarNavItem
         text="Contas"
         url="/accounts"
-        icon={<IdCard size={16} />}
+        icon={<Landmark size={16} />}
       />
     </div>
   );
