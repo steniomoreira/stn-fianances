@@ -6,8 +6,8 @@ import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { initialState } from "../../constants/initialStateContants";
 import resgisterUserAction from "../actions";
-import { initialState } from "../constants/initialStateContants";
 
 function FormSignUp() {
   const [state, formAction, isPending] = useActionState(
