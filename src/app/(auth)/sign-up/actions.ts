@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import { db } from "@/lib/prisma";
 
-import { initialState } from "./constants/initialStateContants";
+import { initialState } from "../constants/initialStateContants";
 
 const singUpSchema = z
   .object({
