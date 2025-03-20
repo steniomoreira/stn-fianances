@@ -38,13 +38,9 @@ function FormSignUp() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <Input
-              placeholder="Sua senha"
-              type="password"
-              name="passwordHash"
-            />
-            {errors?.passwordHash && (
-              <p className="text-xs text-red-500">{errors.passwordHash}</p>
+            <Input placeholder="Sua senha" type="password" name="password" />
+            {errors?.password && (
+              <p className="text-xs text-red-500">{errors.password}</p>
             )}
           </div>
 
