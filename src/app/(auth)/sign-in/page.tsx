@@ -1,10 +1,10 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import googleIcon from "@/assets/images/google.svg";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+
+import FormSignIn from "./components/form-sign-in";
 
 function SingInPage() {
   return (
@@ -20,23 +20,7 @@ function SingInPage() {
         Ou login com e-mail
       </p>
 
-      <form className="w-full space-y-4">
-        <div className="space-y-4">
-          <Input placeholder="Seu e-mail" />
-          <Input placeholder="Sua senha" />
-
-          <Link
-            href="/forgot-password"
-            className="float-right pb-2 text-xs text-muted-foreground"
-          >
-            Esqueci minha senha
-          </Link>
-        </div>
-        <Button className="relative w-full">
-          Login
-          <ArrowRight className="absolute right-3" />
-        </Button>
-      </form>
+      <FormSignIn />
 
       <p className="text-xs text-muted-foreground">
         Ainda não tem uma conta?{" "}
