@@ -4,48 +4,50 @@ import { ArrowRight, LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { initialState } from "../../constants/initialStateContants";
+import MessageError from "../../components/message-error";
+import { initialActionState } from "../../constants/initialActionState";
 import findUserByCredentialsAction from "../actions";
 
 function FormSignIn() {
   const [state, formAction, isPending] = useActionState(
     findUserByCredentialsAction,
-    initialState,
+    initialActionState,
   );
 
-  const { errors, success } = state;
+  const { errors, success, message } = state;
 
   if (success) {
     redirect("/");
   }
 
+  if (message) {
+    toast.error(message, { id: "signInToast" });
+  }
+
   return (
     <form action={formAction} className="w-full">
-      <div className="space-y-4">
-        <div className="flex flex-col gap-1">
+      <div className="mb-4 space-y-4">
+        <div className="flex flex-col gap-2">
           <Input placeholder="Seu e-mail" name="email" />
-          {errors?.email && (
-            <p className="text-xs text-red-500">{errors.email}</p>
-          )}
+          {errors?.email && <MessageError text={errors.email} />}
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <Input placeholder="Sua senha" type="password" name="password" />
-          {errors?.password && (
-            <p className="text-xs text-red-500">{errors.password}</p>
-          )}
-        </div>
+          {errors?.password && <MessageError text={errors.password} />}
 
-        <Link
-          href="/forgot-password"
-          className="float-right pb-2 text-xs text-muted-foreground"
-        >
-          Esqueci minha senha
-        </Link>
+          <Link
+            href="/forgot-password"
+            className="w-fit self-end text-xs text-muted-foreground"
+          >
+            Esqueci minha senha
+          </Link>
+        </div>
       </div>
       <Button className="relative w-full" disabled={isPending}>
         Login

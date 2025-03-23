@@ -2,69 +2,63 @@
 
 import { LoaderCircle } from "lucide-react";
 import { useActionState } from "react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { initialState } from "../../constants/initialStateContants";
+import MessageError from "../../components/message-error";
+import { initialActionState } from "../../constants/initialActionState";
 import resgisterUserAction from "../actions";
 
 function FormSignUp() {
   const [state, formAction, isPending] = useActionState(
     resgisterUserAction,
-    initialState,
+    initialActionState,
   );
 
   const { errors, message } = state;
 
+  if (message) {
+    toast.warning(message, { id: "signUpToast" });
+  }
+
   return (
-    <>
-      <p className="text-red-500">{message}</p>
-
-      <form action={formAction} className="w-full space-y-4">
-        <div className="space-y-4">
-          <div className="flex flex-col gap-1">
-            <Input placeholder="Seu nome" name="name" />
-            {errors?.name && (
-              <p className="text-xs text-red-500">{errors.name}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <Input placeholder="Seu e-mail" name="email" />
-            {errors?.email && (
-              <p className="text-xs text-red-500">{errors.email}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <Input placeholder="Sua senha" type="password" name="password" />
-            {errors?.password && (
-              <p className="text-xs text-red-500">{errors.password}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <Input
-              placeholder="Confirme sua senha"
-              type="password"
-              name="passwordConfirmation"
-            />
-            {errors?.passwordConfirmation && (
-              <p className="text-xs text-red-500">
-                {errors.passwordConfirmation}
-              </p>
-            )}
-          </div>
+    <form action={formAction} className="w-full space-y-4">
+      <div className="space-y-4">
+        <div className="flex flex-col gap-2">
+          <Input placeholder="Seu nome" name="name" />
+          {errors?.name && <MessageError text={errors.name} />}
         </div>
-        <Button className="relative w-full" disabled={isPending}>
-          Criar conta
-          {isPending && (
-            <LoaderCircle className="absolute right-3 animate-spin" />
+
+        <div className="flex flex-col gap-2">
+          <Input placeholder="Seu e-mail" name="email" />
+          {errors?.email && <MessageError text={errors.email} />}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Input placeholder="Sua senha" type="password" name="password" />
+          {errors?.password && <MessageError text={errors.password} />}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Input
+            placeholder="Confirme sua senha"
+            type="password"
+            name="passwordConfirmation"
+          />
+          {errors?.passwordConfirmation && (
+            <MessageError text={errors.passwordConfirmation} />
           )}
-        </Button>
-      </form>
-    </>
+        </div>
+      </div>
+      <Button className="relative w-full" disabled={isPending}>
+        Criar conta
+        {isPending && (
+          <LoaderCircle className="absolute right-3 animate-spin" />
+        )}
+      </Button>
+    </form>
   );
 }
 
