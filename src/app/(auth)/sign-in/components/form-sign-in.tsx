@@ -2,6 +2,7 @@
 
 import { ArrowRight, LoaderCircle } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -16,10 +17,14 @@ function FormSignIn() {
     initialState,
   );
 
-  const { errors } = state;
+  const { errors, success } = state;
+
+  if (success) {
+    redirect("/");
+  }
 
   return (
-    <form action={formAction} className="w-full space-y-4">
+    <form action={formAction} className="w-full">
       <div className="space-y-4">
         <div className="flex flex-col gap-1">
           <Input placeholder="Seu e-mail" name="email" />
