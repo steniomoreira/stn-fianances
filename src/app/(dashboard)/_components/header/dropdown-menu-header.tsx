@@ -1,5 +1,6 @@
 import { BadgeCheck, LogOut, Sparkles, UserRoundPen } from "lucide-react";
 
+import signOutAction from "@/app/(auth)/sign-out/actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -58,10 +59,17 @@ function DropdownMenuHeader() {
           Conta
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-rose-500 focus:text-red-500">
-          <LogOut />
-          Sair
-        </DropdownMenuItem>
+        <form action={signOutAction}>
+          <DropdownMenuItem
+            className="w-full text-rose-500 focus:text-red-500"
+            asChild
+          >
+            <button>
+              <LogOut />
+              Sair
+            </button>
+          </DropdownMenuItem>
+        </form>
       </DropdownMenuContent>
     </DropdownMenu>
   );
