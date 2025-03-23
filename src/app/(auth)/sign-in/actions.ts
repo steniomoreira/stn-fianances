@@ -3,7 +3,7 @@
 import { z } from "zod";
 
 import { signIn } from "../../../../auth";
-import { initialState } from "../constants/initialStateContants";
+import { initialActionState } from "../constants/initialActionState";
 
 const singUpSchema = z.object({
   email: z.string().email({ message: "Digite um e-mail válido." }),
@@ -21,7 +21,7 @@ export default async function findUserByCredentialsAction(
   if (!formData.success) {
     const errors = formData.error.flatten().fieldErrors;
 
-    return { ...initialState, errors };
+    return { ...initialActionState, errors };
   }
 
   const { email, password } = formData.data;
@@ -32,16 +32,16 @@ export default async function findUserByCredentialsAction(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     if (err.type === "CredentialsSignin") {
-      return { ...initialState, message: "Dados de login incorretos" };
+      return { ...initialActionState, message: "Credenciais inválidas" };
     }
 
     console.error(err);
 
     return {
-      ...initialState,
+      ...initialActionState,
       message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
     };
   }
 
-  return { ...initialState, success: true };
+  return { ...initialActionState, success: true };
 }

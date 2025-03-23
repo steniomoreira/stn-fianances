@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import { db } from "@/lib/prisma";
 
-import { initialState } from "../constants/initialStateContants";
+import { initialActionState } from "../constants/initialActionState";
 
 const singUpSchema = z
   .object({
@@ -30,7 +30,7 @@ export default async function resgisterUserAction(_: unknown, data: FormData) {
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors;
 
-    return { ...initialState, errors };
+    return { ...initialActionState, errors };
   }
 
   const { name, email, password } = result.data;
@@ -42,7 +42,7 @@ export default async function resgisterUserAction(_: unknown, data: FormData) {
   });
 
   if (user) {
-    return { ...initialState, message: "Este usuário já existe!" };
+    return { ...initialActionState, message: "Este usuário já existe!" };
   }
 
   await db.user
@@ -57,5 +57,5 @@ export default async function resgisterUserAction(_: unknown, data: FormData) {
       redirect(`/sign-in?email=${email}`);
     });
 
-  return { ...initialState, success: true };
+  return { ...initialActionState, success: true };
 }
