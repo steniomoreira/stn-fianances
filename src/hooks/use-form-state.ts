@@ -1,11 +1,8 @@
 import { FormEvent, useState, useTransition } from "react";
-import { toast } from "sonner";
 
-interface FormState {
-  success: boolean;
-  message: string | null;
-  errors: Record<string, string[]> | null;
-}
+import { FormState } from "@/types/form-state-types";
+
+import { useAlertMessage } from "./use-alert-message";
 
 export function useFormState(
   action: (data: FormData) => Promise<FormState>,
@@ -14,19 +11,16 @@ export function useFormState(
 ) {
   const [isPending, startTransition] = useTransition();
 
+  const { alertMessage } = useAlertMessage();
+
   const [formState, setFormState] = useState<FormState>(
     initialState ?? {
       success: false,
       message: null,
       errors: null,
+      type: null,
     },
   );
-
-  function alertMessage(message: string) {
-    if (message) {
-      toast.error(message);
-    }
-  }
 
   async function actionForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,12 +31,12 @@ export function useFormState(
     startTransition(async () => {
       const state = await action(data);
 
-      if (onSuccess && state.success) {
-        onSuccess();
+      if (state.type && state.message) {
+        alertMessage({ type: state.type, text: state.message });
       }
 
-      if (state.message) {
-        alertMessage(state.message);
+      if (onSuccess && state.success) {
+        onSuccess();
       }
 
       setFormState(state);
