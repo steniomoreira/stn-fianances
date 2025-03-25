@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import MessageError from "../../components/message-error";
-import { initialActionState } from "../../constants/initialActionState";
+import { actionState } from "../../constants/actionState";
 import resgisterUserAction from "../actions";
 
 function FormSignUp() {
   const [state, formAction, isPending] = useActionState(
     resgisterUserAction,
-    initialActionState,
+    actionState,
   );
 
   const { errors, message } = state;

@@ -2,8 +2,10 @@
 
 import { z } from "zod";
 
+import { FormState } from "@/types/form-state-types";
+
 import { signIn } from "../../../../auth";
-import { initialActionState } from "../constants/initialActionState";
+import { actionState } from "../constants/actionState";
 
 const singUpSchema = z.object({
   email: z.string().email({ message: "Digite um e-mail válido." }),
@@ -12,13 +14,15 @@ const singUpSchema = z.object({
     .min(6, { message: "A senha deve conter no mínimo 6 caracteres" }),
 });
 
-export default async function findUserByCredentialsAction(data: FormData) {
+export default async function findUserByCredentialsAction(
+  data: FormData,
+): Promise<FormState> {
   const formData = singUpSchema.safeParse(Object.fromEntries(data));
 
   if (!formData.success) {
     const errors = formData.error.flatten().fieldErrors;
 
-    return { success: false, message: null, errors };
+    return { ...actionState, errors };
   }
 
   const { email, password } = formData.data;
@@ -29,16 +33,21 @@ export default async function findUserByCredentialsAction(data: FormData) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     if (err.type === "CredentialsSignin") {
-      return { ...initialActionState, message: "Credenciais inválidas" };
+      return {
+        ...actionState,
+        message: "Credenciais inválidas",
+        type: "error",
+      };
     }
 
     console.error(err);
 
     return {
-      ...initialActionState,
+      ...actionState,
       message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
+      type: "error",
     };
   }
 
-  return { ...initialActionState, success: true };
+  return { ...actionState, success: true };
 }
