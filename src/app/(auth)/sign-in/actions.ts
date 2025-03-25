@@ -3,6 +3,7 @@
 import { z } from "zod";
 
 import { signIn } from "../../../../auth";
+import { initialActionState } from "../constants/initialActionState";
 
 const singUpSchema = z.object({
   email: z.string().email({ message: "Digite um e-mail válido." }),
@@ -28,17 +29,16 @@ export default async function findUserByCredentialsAction(data: FormData) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     if (err.type === "CredentialsSignin") {
-      return { success: false, message: "Credenciais inválidas", errors: null };
+      return { ...initialActionState, message: "Credenciais inválidas" };
     }
 
     console.error(err);
 
     return {
-      success: false,
+      ...initialActionState,
       message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
-      errors: null,
     };
   }
 
-  return { success: true, message: null, errors: null };
+  return { ...initialActionState, success: true };
 }
