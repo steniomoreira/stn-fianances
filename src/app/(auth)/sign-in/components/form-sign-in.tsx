@@ -2,8 +2,8 @@
 
 import { ArrowRight, LoaderCircle } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useActionState } from "react";
+import { useRouter } from "next/navigation";
+import { FormEvent, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -14,15 +14,33 @@ import { initialActionState } from "../../constants/initialActionState";
 import findUserByCredentialsAction from "../actions";
 
 function FormSignIn() {
-  const [state, formAction, isPending] = useActionState(
-    findUserByCredentialsAction,
-    initialActionState,
-  );
+  const [isPending, startTransition] = useTransition();
 
-  const { errors, success, message } = state;
+  const [formState, setFormState] = useState<{
+    success: boolean;
+    message: string | null;
+    errors: Record<string, string[]> | null;
+  }>(initialActionState);
 
-  if (success) {
-    redirect("/");
+  const { message, errors } = formState;
+
+  const route = useRouter();
+
+  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    startTransition(async () => {
+      const state = await findUserByCredentialsAction(data);
+
+      if (state.success) {
+        route.push("/");
+      }
+
+      setFormState(state);
+    });
   }
 
   if (message) {
@@ -30,7 +48,7 @@ function FormSignIn() {
   }
 
   return (
-    <form action={formAction} className="w-full">
+    <form onSubmit={handleSignIn} className="w-full">
       <div className="mb-4 space-y-4">
         <div className="flex flex-col gap-2">
           <Input placeholder="Seu e-mail" name="email" />

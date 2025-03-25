@@ -3,7 +3,6 @@
 import { z } from "zod";
 
 import { signIn } from "../../../../auth";
-import { initialActionState } from "../constants/initialActionState";
 
 const singUpSchema = z.object({
   email: z.string().email({ message: "Digite um e-mail válido." }),
@@ -12,16 +11,13 @@ const singUpSchema = z.object({
     .min(6, { message: "A senha deve conter no mínimo 6 caracteres" }),
 });
 
-export default async function findUserByCredentialsAction(
-  _: unknown,
-  data: FormData,
-) {
+export default async function findUserByCredentialsAction(data: FormData) {
   const formData = singUpSchema.safeParse(Object.fromEntries(data));
 
   if (!formData.success) {
     const errors = formData.error.flatten().fieldErrors;
 
-    return { ...initialActionState, errors };
+    return { success: false, message: null, errors };
   }
 
   const { email, password } = formData.data;
@@ -32,16 +28,17 @@ export default async function findUserByCredentialsAction(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     if (err.type === "CredentialsSignin") {
-      return { ...initialActionState, message: "Credenciais inválidas" };
+      return { success: false, message: "Credenciais inválidas", errors: null };
     }
 
     console.error(err);
 
     return {
-      ...initialActionState,
+      success: false,
       message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
+      errors: null,
     };
   }
 
-  return { ...initialActionState, success: true };
+  return { success: true, message: null, errors: null };
 }
