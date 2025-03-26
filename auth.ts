@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-import { findUserByEmailAndPassword } from "@/services/users/findUserByEmailAndPassword";
+import { findUserByEmailAndPassword } from "@/services/users/find-user-by-email-and-password";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

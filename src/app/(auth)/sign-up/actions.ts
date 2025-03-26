@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 
-import { findUserByEmail } from "@/services/users/findUserByEmail";
+import { findUserByEmail } from "@/services/users/find-user-by-email";
 import { registerUser } from "@/services/users/register-user";
 import { FormState } from "@/types/form-state-types";
 
