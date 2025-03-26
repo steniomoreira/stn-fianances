@@ -1,10 +1,10 @@
 "use server";
 
-import { hashSync } from "bcrypt-ts";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import { db } from "@/lib/prisma";
+import { findUserByEmail } from "@/services/users/findUserByEmail";
+import { registerUser } from "@/services/users/register-user";
+import { FormState } from "@/types/form-state-types";
 
 import { actionState } from "../constants/actionState";
 
@@ -24,7 +24,9 @@ const singUpSchema = z
     path: ["passwordConfirmation"],
   });
 
-export default async function resgisterUserAction(_: unknown, data: FormData) {
+export default async function resgisterUserAction(
+  data: FormData,
+): Promise<FormState> {
   const result = singUpSchema.safeParse(Object.fromEntries(data));
 
   if (!result.success) {
@@ -35,27 +37,32 @@ export default async function resgisterUserAction(_: unknown, data: FormData) {
 
   const { name, email, password } = result.data;
 
-  const user = await db.user.findUnique({
-    where: {
-      email,
-    },
-  });
+  const user = await findUserByEmail(email);
 
   if (user) {
-    return { ...actionState, message: "Este usuário já existe!" };
+    return {
+      ...actionState,
+      message: "Este usuário já está cadastrado!",
+      type: "warning",
+    };
   }
 
-  await db.user
-    .create({
-      data: {
-        name,
-        email,
-        passwordHash: hashSync(password),
-      },
-    })
-    .then(() => {
-      redirect(`/sign-in?email=${email}`);
-    });
+  try {
+    await registerUser({ name, email, password });
+  } catch (err) {
+    console.error(err);
 
-  return { ...actionState, success: true };
+    return {
+      ...actionState,
+      message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
+      type: "error",
+    };
+  }
+
+  return {
+    ...actionState,
+    success: true,
+    message: "Usuário cadastrado com sucesso!",
+    type: "success",
+  };
 }

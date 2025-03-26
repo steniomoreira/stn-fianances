@@ -22,7 +22,7 @@ export function useFormState(
     },
   );
 
-  async function actionForm(event: FormEvent<HTMLFormElement>) {
+  async function formAction(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -31,6 +31,8 @@ export function useFormState(
     startTransition(async () => {
       const state = await action(data);
 
+      setFormState(state);
+
       if (state.type && state.message) {
         alertMessage({ type: state.type, text: state.message });
       }
@@ -38,10 +40,8 @@ export function useFormState(
       if (onSuccess && state.success) {
         onSuccess();
       }
-
-      setFormState(state);
     });
   }
 
-  return [formState, actionForm, isPending] as const;
+  return [formState, formAction, isPending] as const;
 }

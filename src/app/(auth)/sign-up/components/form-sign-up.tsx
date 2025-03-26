@@ -1,30 +1,27 @@
 "use client";
 
 import { LoaderCircle } from "lucide-react";
-import { useActionState } from "react";
-import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useFormState } from "@/hooks/use-form-state";
 
 import MessageError from "../../components/message-error";
-import { actionState } from "../../constants/actionState";
 import resgisterUserAction from "../actions";
 
 function FormSignUp() {
-  const [state, formAction, isPending] = useActionState(
+  const route = useRouter();
+
+  const [{ errors }, formAction, isPending] = useFormState(
     resgisterUserAction,
-    actionState,
+    () => {
+      route.push("/sign-in");
+    },
   );
 
-  const { errors, message } = state;
-
-  if (message) {
-    toast.warning(message, { id: "signUpToast" });
-  }
-
   return (
-    <form action={formAction} className="w-full space-y-4">
+    <form onSubmit={formAction} className="w-full space-y-4">
       <div className="space-y-4">
         <div className="flex flex-col gap-2">
           <Input placeholder="Seu nome" name="name" />
