@@ -11,32 +11,40 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-function DropdownMenuHeader() {
+import { auth } from "../../../../../auth";
+
+async function DropdownMenuHeader() {
+  const session = await auth();
+
+  if (!session) {
+    return null;
+  }
+
+  const { user } = session;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="h-8 w-8">
-          <AvatarImage
-            src="https://github.com/steniomoreira.png"
-            alt="Stenio Moreira"
-          />
-          <AvatarFallback>SM</AvatarFallback>
+          <AvatarImage src="" alt={user?.name || "STN Finance"} />
+          <AvatarFallback>
+            {user?.name && user.name.charAt(0).toUpperCase()}
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>
           <div className="flex flex-col items-center gap-2 px-1 py-1.5">
             <Avatar>
-              <AvatarImage
-                src="https://github.com/steniomoreira.png"
-                alt="Stenio Moreira"
-              />
-              <AvatarFallback>SM</AvatarFallback>
+              <AvatarImage src="" alt={user?.name || "STN Finance"} />
+              <AvatarFallback>
+                {user?.name && user.name.charAt(0).toUpperCase()}
+              </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-center text-sm leading-tight">
-              <span className="truncate font-semibold">Stenio Moreira</span>
+              <span className="truncate font-semibold">{user?.name}</span>
               <span className="truncate text-xs text-muted-foreground">
-                steniomoreiradev@gmail.com
+                {user?.email}
               </span>
             </div>
           </div>
