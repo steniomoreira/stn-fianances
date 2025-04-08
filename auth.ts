@@ -22,4 +22,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  session: {
+    maxAge: 60 * 60 * 24 * 7, // 7 dias
+  },
+  jwt: {
+    maxAge: 60 * 60 * 24 * 7, // 7 dias
+  },
+  cookies: {
+    sessionToken: {
+      name: "stn-token",
+    },
+  },
 });
