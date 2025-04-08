@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import bgSignIn from "@/assets/images/bg-sign-in.svg";
+import logoStnFinance from "@/assets/logo-stn-finance.svg";
 
 function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -10,7 +11,7 @@ function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
           <div className="absolute left-5 top-5 flex items-center gap-2">
             <div className="relative h-8 w-8">
               <Image
-                src="/logo-stn-finance.svg"
+                src={logoStnFinance}
                 alt="STN Finance"
                 fill
                 className="object-contain"
