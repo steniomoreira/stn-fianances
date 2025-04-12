@@ -16,7 +16,7 @@ export async function findUserByEmailAndPassword(
     return null;
   }
 
-  const isPasswordMatch = compareSync(password, user.passwordHash);
+  const isPasswordMatch = compareSync(password, user.passwordHash || "");
 
   if (isPasswordMatch) {
     return { email: user.email, name: user.name };
