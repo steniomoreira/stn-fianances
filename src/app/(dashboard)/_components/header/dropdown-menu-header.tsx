@@ -26,7 +26,10 @@ async function DropdownMenuHeader() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="h-8 w-8">
-          <AvatarImage src="" alt={user?.name || "STN Finance"} />
+          <AvatarImage
+            src={user?.image || ""}
+            alt={user?.name || "STN Finance"}
+          />
           <AvatarFallback>
             {user?.name && user.name.charAt(0).toUpperCase()}
           </AvatarFallback>
@@ -36,7 +39,10 @@ async function DropdownMenuHeader() {
         <DropdownMenuLabel>
           <div className="flex flex-col items-center gap-2 px-1 py-1.5">
             <Avatar>
-              <AvatarImage src="" alt={user?.name || "STN Finance"} />
+              <AvatarImage
+                src={user?.image || ""}
+                alt={user?.name || "STN Finance"}
+              />
               <AvatarFallback>
                 {user?.name && user.name.charAt(0).toUpperCase()}
               </AvatarFallback>
