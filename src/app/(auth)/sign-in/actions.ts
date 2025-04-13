@@ -1,5 +1,6 @@
 "use server";
 
+import { AuthError } from "next-auth";
 import { z } from "zod";
 
 import { FormState } from "@/types/form-state-types";
@@ -29,24 +30,25 @@ export default async function findUserByCredentialsAction(
 
   try {
     await signIn("credentials", { email, password, redirect: false });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (err: any) {
-    if (err.type === "CredentialsSignin") {
-      return {
-        ...actionState,
-        message: "Credenciais inválidas",
-        type: "error",
-      };
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return {
+            ...actionState,
+            message: "Credenciais inválidas",
+            type: "error",
+          };
+        default:
+          return {
+            ...actionState,
+            message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
+            type: "error",
+          };
+      }
     }
 
-    console.error(err);
-
-    return {
-      ...actionState,
-      message: "Ocorreu um erro inesperado. Tente novamente mais tarde.",
-      type: "error",
-    };
+    console.error(error);
   }
 
   return { ...actionState, success: true };
