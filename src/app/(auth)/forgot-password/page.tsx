@@ -10,9 +10,9 @@ function ForgotPasswordPage() {
 
       <form className="w-full space-y-4">
         <div className="space-y-4">
-          <Input placeholder="Seu e-mail" />
+          <Input placeholder="Seu e-mail" autoFocus />
         </div>
-        <Button className="w-full">Enviar link</Button>
+        <Button className="w-full">Redefinir senha</Button>
       </form>
 
       <p className="text-xs text-muted-foreground">

@@ -37,7 +37,9 @@ export default async function resgisterUserAction(
 
   const { name, email, password } = result.data;
 
-  const user = await findUserByEmail(email);
+  const lowerCaseEmail = email.toLocaleLowerCase();
+
+  const user = await findUserByEmail(lowerCaseEmail);
 
   if (user) {
     return {
@@ -48,7 +50,7 @@ export default async function resgisterUserAction(
   }
 
   try {
-    await registerUser({ name, email, password });
+    await registerUser({ name, email: lowerCaseEmail, password });
   } catch (err) {
     console.error(err);
 

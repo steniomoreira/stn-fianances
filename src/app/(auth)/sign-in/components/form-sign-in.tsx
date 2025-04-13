@@ -25,7 +25,7 @@ function FormSignIn() {
     <form onSubmit={formAction} className="w-full">
       <div className="mb-4 space-y-4">
         <div className="flex flex-col gap-2">
-          <Input placeholder="Seu e-mail" name="email" />
+          <Input placeholder="Seu e-mail" name="email" autoFocus />
           {errors?.email && <MessageError text={errors.email} />}
         </div>
 

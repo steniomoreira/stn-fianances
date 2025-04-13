@@ -29,7 +29,11 @@ export default async function findUserByCredentialsAction(
   const { email, password } = formData.data;
 
   try {
-    await signIn("credentials", { email, password, redirect: false });
+    await signIn("credentials", {
+      email: email.toLowerCase(),
+      password,
+      redirect: false,
+    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

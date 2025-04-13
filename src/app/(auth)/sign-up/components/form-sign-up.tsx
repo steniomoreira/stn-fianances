@@ -24,7 +24,7 @@ function FormSignUp() {
     <form onSubmit={formAction} className="w-full space-y-4">
       <div className="space-y-4">
         <div className="flex flex-col gap-2">
-          <Input placeholder="Seu nome" name="name" />
+          <Input placeholder="Seu nome" name="name" autoFocus />
           {errors?.name && <MessageError text={errors.name} />}
         </div>
 
